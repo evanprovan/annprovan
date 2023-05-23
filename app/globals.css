@@ -15,6 +15,7 @@
     padding: 0;
     margin: 0;
     letter-spacing: -0.05em;
+    outline-color: var(--primary-color);
 }
 
 html,
@@ -185,16 +186,22 @@ a.branding {
     position: fixed;
     top: 50%;
     left: 50%;
+    overflow: hidden;
+    overflow-y: auto !important;
     transform: translate(-50%, -50%);
     width: var(--outer-width);
     max-width: 38rem;
+    max-height: 80vh;
     overflow: hidden;
     background-color: #ffffff;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='398' viewBox='0 0 100 199'%3E%3Cg fill='%23161616' fill-opacity='0.05'%3E%3Cpath d='M0 199V0h1v1.99L100 199h-1.12L1 4.22V199H0zM100 2h-.12l-1-2H100v2z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
     border-radius: var(--border-radius);
     box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
-    padding: 2rem 2.5rem 2.5rem 2.5rem;
     z-index: 11;
+}
+.search-header{
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='398' viewBox='0 0 100 199'%3E%3Cg fill='%23161616' fill-opacity='0.05'%3E%3Cpath d='M0 199V0h1v1.99L100 199h-1.12L1 4.22V199H0zM100 2h-.12l-1-2H100v2z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
+    padding: 2rem 2.5rem 2rem 2.5rem;
+    
 }
 .search-dialog h2 {
     white-space: normal;
@@ -215,7 +222,7 @@ button.close svg {
 }
 #search {
     width: 100%;
-    padding: 1rem 1.25rem 1rem 1.25rem;
+    padding: 1rem 1.25rem 1rem 3.25rem;
     font-size: 1.4rem;
     color: #161616;
     font-family: inherit;
@@ -229,19 +236,20 @@ button.close svg {
     outline: none;
     border-color: var(--font-color);
 }
-#search-submit {
-    border-radius: var(--border-radius);
-    border: none;
-    background: none;
+.search-icon {
     position: absolute;
-    right: 0;
+    display: flex;
+    align-items: center;
+    top: 0;
+    left: 0;
     height: 100%;
-    padding: 0 1.15rem;
-    cursor: pointer;
+    padding: 0 1rem;
+    pointer-events: none;
 }
-#search-submit svg {
-    width: 1.5rem;
-    height: 1.5rem;
+.search-icon svg {
+    width: 1.4rem;
+    height: 1.4rem;
+    opacity: .7;
 }
 .search-dialog span {
     display: block;
@@ -249,14 +257,75 @@ button.close svg {
     color: rgba(var(--font-color-rgb), 0.75);
     font-size: 0.9rem;
 }
+.search-results{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 0 2.5rem;
+    background-color: #f8f8f8;
+}
+.search-item{
+    position: relative;
+    overflow: hidden;
+    display: block;
+}
+.search-item a{
+    display: inline-block;
+    width: 100%;
+    position: relative;
+    outline-offset: 0px;
+    overflow: hidden;
+}
+.search-item svg{
+    width: 1.5rem;
+    height: 1.5rem;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: scaleX(-1) translatex(1rem);
+    opacity: 0;
+    transition: all 200ms var(--easeout);
+}
+.search-item a:hover svg, .search-item a:focus svg{
+    transform: scaleX(-1) translatex(0rem);
+    opacity: 1;
+}
+.search-item:first-child{
+    margin-top: 1.5em;
+}
+.search-item:last-child{
+    margin-bottom: 1.5em;
+}
+.search-item h3{
+    font-size: 1.5em;
+    font-weight: 600;
+    padding-right: 2em;
+}
+.search-item span{
+    font-size: 1em;
+    font-weight: 400;
+    margin: .25rem 0 0 0;
+    opacity: .8;
+}
 @media (max-width: 40em) {
-    .search-dialog {
-        padding: 1.75rem;
+    .search-header{
+        padding: 1.5rem;
+    }
+    .search-results{
+        padding: 0 1.5rem;
     }
 }
 @media (max-width: 58em) {
     .search-dialog h2 {
         font-size: 1.6rem;
+    }
+}
+@media (max-width: 25em){
+    .search-item svg{
+        display: none;
+    }
+    .search-item h3{
+        padding-right: 0;
     }
 }
 
@@ -269,7 +338,6 @@ button.close svg {
     background-color: var(--background-color);
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='398' viewBox='0 0 100 199'%3E%3Cg fill='%23161616' fill-opacity='0.05'%3E%3Cpath d='M0 199V0h1v1.99L100 199h-1.12L1 4.22V199H0zM100 2h-.12l-1-2H100v2z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
     z-index: 10;
-    padding-top: 2rem;
 }
 .mobilenav-list {
     display: flex;

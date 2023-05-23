@@ -4,7 +4,30 @@ import { HomepageImg } from '@/types/HomepageImg';
 import { Work } from '@/types/Work';
 import { Category } from '@/types/Category';
 import clientConfig from './config/client-config';
+import { HeaderItems } from '@/types/HeaderItems';
 
+export async function getHeaderItems(): Promise<HeaderItems> {
+    return createClient(clientConfig).fetch(
+        groq`{
+                'works': *[_type == "work"]|order(title asc){
+                    title,
+                    slug,
+                    category->{
+                        name,
+                        slug{
+                          current
+                        },
+                      },
+                },
+                'category': *[_type == "category"]|order(orderRank){
+                    name,
+                    slug{
+                        current
+                    }
+                }
+            }`
+    );
+}
 export async function getHomepageImg(): Promise<HomepageImg> {
     return createClient(clientConfig).fetch(
         groq`*[_type == "siteSettings"][0]{

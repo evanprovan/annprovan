@@ -1,10 +1,10 @@
-'use client';
-import { motion } from 'framer-motion';
-import Link from 'next/link';
-import Image from 'next/image';
-import { urlFor } from '@/sanity/sanity-utils';
-import Fancybox from './Fancybox';
-import Carousel from './Carousel';
+'use client'
+import { motion } from 'framer-motion'
+import Link from 'next/link'
+import Image from 'next/image'
+import { urlFor } from '@/sanity/sanity-utils'
+import Fancybox from './Fancybox'
+import Carousel from './Carousel'
 
 const SingleWork = ({ work }: any) => {
     const fadeinmedia = {
@@ -22,7 +22,7 @@ const SingleWork = ({ work }: any) => {
                 duration: 0.2,
             },
         },
-    };
+    }
     const fadeinchildren = {
         visible: {
             transition: {
@@ -38,72 +38,91 @@ const SingleWork = ({ work }: any) => {
                 staggerChildren: 0.2,
             },
         },
-    };
-    const fadeininfo = {
+    }
+    // const fadeininfo = {
+    //     visible: {
+    //         opacity: 1,
+    //         y: 0,
+    //         transition: {
+    //             duration: 0.4,
+    //         },
+    //     },
+    //     hidden: {
+    //         opacity: 0,
+    //         y: 10,
+    //         transition: {
+    //             duration: 0.2,
+    //         },
+    //     },
+    // }
+    // const fadeintitle = {
+    //     visible: {
+    //         clipPath: 'polygon(0 0, 100% 0, 100% 120%, 0% 120%)',
+    //         transition: {
+    //             duration: 0.5,
+    //         },
+    //     },
+    //     hidden: {
+    //         clipPath: 'polygon(0 0, 0% 0, 0% 120%, 0% 120%)',
+    //         transition: {
+    //             duration: 0.2,
+    //         },
+    //     },
+    // }
+    const fadein = {
         visible: {
+            color: 'rgb(22, 22, 22)',
             opacity: 1,
-            y: 0,
             transition: {
-                duration: 0.4,
+                duration: 1,
+                ease: 'easeInOut',
             },
         },
         hidden: {
+            color: '#ff0037',
             opacity: 0,
-            y: 10,
             transition: {
-                duration: 0.2,
+                ease: 'easeInOut',
             },
         },
-    };
-    const fadeintitle = {
-        visible: {
-            clipPath: 'polygon(0 0, 100% 0, 100% 120%, 0% 120%)',
-            transition: {
-                duration: 0.5,
-            },
-        },
-        hidden: {
-            clipPath: 'polygon(0 0, 0% 0, 0% 120%, 0% 120%)',
-            transition: {
-                duration: 0.2,
-            },
-        },
-    };
+    }
+    const arrowIcon = (
+        <svg
+            width="19"
+            height="21"
+            viewBox="0 0 19 21"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <path
+                d="M16.0312 10.4277L2.96875 10.4277"
+                stroke="black"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+            />
+            <path
+                d="M8.3125 4.5625L2.96875 10.4281L8.3125 16.2937"
+                stroke="black"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+            />
+        </svg>
+    )
 
     return (
-        <div className='single-work'>
-            <div className='media-wrapper'>
-                <Link className='back' href={`/${work.category.slug.current}`}>
-                    <svg
-                        width='19'
-                        height='21'
-                        viewBox='0 0 19 21'
-                        fill='none'
-                        xmlns='http://www.w3.org/2000/svg'
-                    >
-                        <path
-                            d='M16.0312 10.4277L2.96875 10.4277'
-                            stroke='black'
-                            strokeWidth='2'
-                            strokeLinecap='round'
-                            strokeLinejoin='round'
-                        />
-                        <path
-                            d='M8.3125 4.5625L2.96875 10.4281L8.3125 16.2937'
-                            stroke='black'
-                            strokeWidth='2'
-                            strokeLinecap='round'
-                            strokeLinejoin='round'
-                        />
-                    </svg>
-                    Back to <strong>{work.category.name}</strong>
+        <div className="single-work">
+            <div className="media-wrapper">
+                <Link className="back" href={`/${work.category.slug.current}`}>
+                    {arrowIcon}Back to <strong>{work.category.name}</strong>
                 </Link>
                 <motion.div
-                    className='media'
+                    className="media"
                     variants={fadeinmedia}
-                    initial='hidden'
-                    animate='visible'
-                    exit='hidden'
+                    initial="hidden"
+                    animate="visible"
+                    exit="hidden"
                 >
                     <Fancybox
                         options={{
@@ -113,7 +132,12 @@ const SingleWork = ({ work }: any) => {
                             Toolbar: {
                                 display: {
                                     left: ['infobar'],
-                                    middle: ['zoomIn', 'zoomOut', 'fullscreen', 'download'],
+                                    middle: [
+                                        'zoomIn',
+                                        'zoomOut',
+                                        'fullscreen',
+                                        'download',
+                                    ],
                                     right: [, 'thumbs', 'close'],
                                 },
                             },
@@ -123,15 +147,22 @@ const SingleWork = ({ work }: any) => {
                             {work.media.map((media: any) => (
                                 <Image
                                     key={media.asset._id}
-                                    className={work.media.length > 1 ? 'f-carousel__slide' : ''}
-                                    style={{ aspectRatio: media.asset.metadata.dimensions.aspectRatio }}
+                                    className={
+                                        work.media.length > 1 ? 'f-carousel__slide' : ''
+                                    }
+                                    style={{
+                                        aspectRatio:
+                                            media.asset.metadata.dimensions.aspectRatio,
+                                    }}
                                     src={urlFor(media.asset._id).width(1500).url()}
-                                    placeholder='blur'
+                                    placeholder="blur"
                                     blurDataURL={media.asset.metadata.lqip}
                                     alt={work.title}
                                     width={1500}
-                                    height={1500 / media.asset.metadata.dimensions.aspectRatio}
-                                    data-fancybox='gallery'
+                                    height={
+                                        1500 / media.asset.metadata.dimensions.aspectRatio
+                                    }
+                                    data-fancybox="gallery"
                                     data-src={urlFor(media.asset._id).url()}
                                 />
                             ))}
@@ -140,38 +171,40 @@ const SingleWork = ({ work }: any) => {
                 </motion.div>
             </div>
             <motion.h1
-                className='work-title'
-                variants={fadeintitle}
-                initial='hidden'
-                whileInView='visible'
-                exit='hidden'
+                className="work-title"
+                variants={fadein}
+                initial="hidden"
+                whileInView="visible"
+                exit="hidden"
                 viewport={{ once: true }}
             >
                 {work.title}
             </motion.h1>
             <motion.div
-                className='info'
+                className="info"
                 variants={fadeinchildren}
-                initial='hidden'
-                whileInView='visible'
-                exit='hidden'
+                initial="hidden"
+                whileInView="visible"
+                exit="hidden"
                 viewport={{ once: true }}
             >
-                <motion.div className='year' variants={fadeininfo}>
+                <motion.div className="year" variants={fadein}>
                     <span>Year</span>
                     <h2>{work.year}</h2>
                 </motion.div>
-                <motion.div className='medium' variants={fadeininfo}>
+                <motion.div className="medium" variants={fadein}>
                     <span>Medium</span>
                     <h2>
                         {work.materials.map((material: any, index: number) => (
                             <span key={material.name}>
-                                {index !== work.materials.length - 1 ? material.name + ', ' : material.name}
+                                {index !== work.materials.length - 1
+                                    ? material.name + ', '
+                                    : material.name}
                             </span>
                         ))}
                     </h2>
                 </motion.div>
-                <motion.div className='dimensions' variants={fadeininfo}>
+                <motion.div className="dimensions" variants={fadein}>
                     <span>Dimensions</span>
                     {work.depth !== null ? (
                         <h2>{`${work.height}" x ${work.width}" x ${work.depth}"`}</h2>
@@ -180,13 +213,13 @@ const SingleWork = ({ work }: any) => {
                     )}
                 </motion.div>
                 {work.description !== null && (
-                    <motion.div className='description' variants={fadeininfo}>
+                    <motion.div className="description" variants={fadein}>
                         <p>{work.description}</p>
                     </motion.div>
                 )}
             </motion.div>
         </div>
-    );
-};
+    )
+}
 
-export default SingleWork;
+export default SingleWork
