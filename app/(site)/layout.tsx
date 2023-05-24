@@ -12,7 +12,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     return (
         <html lang="en">
             <body className={inter.className}>
-                <main>
+                <main className="main">
+                    {/* @ts-expect-error Async Server Component */}
                     <TheHeader />
 
                     {children}
