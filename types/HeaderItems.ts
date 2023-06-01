@@ -1,5 +1,5 @@
 export type Category = {
-    map(arg0: (work: any) => JSX.Element): import('react').ReactNode
+    map?(arg0: (work: any) => JSX.Element): import('react').ReactNode
     name: string
     slug: {
         current: string
@@ -15,6 +15,6 @@ export type Works = {
 }
 
 export type HeaderItems = {
-    category: Category[];
-    works: Works[];
-};
+    category: Category[]
+    works: Works[]
+}

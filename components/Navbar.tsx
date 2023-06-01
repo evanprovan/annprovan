@@ -33,7 +33,7 @@ const searchIcon = (
 )
 
 const Navbar = ({ category, works }: HeaderItems) => {
-    const otherPages: Category = [
+    const otherPages: Array<Category> = [
         {
             name: 'About',
             slug: {
