@@ -1,7 +1,11 @@
 'use client'
 import { motion } from 'framer-motion'
 
-const AnimatedTitle: React.FC<AnimatedTitleProps> = ({ children }) => {
+type Props = {
+    children: React.ReactNode
+}
+
+const AnimatedTitle: React.FC<Props> = ({ children }) => {
     const fadein = {
         visible: {
             color: 'rgb(22, 22, 22)',
