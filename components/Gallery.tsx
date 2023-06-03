@@ -28,7 +28,7 @@ const Gallery = ({ works }: any) => {
             exit="hidden"
         >
             {works.map((work: any) => (
-                <Thumbnail work={work} />
+                <Thumbnail work={work} key={work.slug.current} />
             ))}
         </motion.div>
     )
