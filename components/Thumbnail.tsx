@@ -26,9 +26,8 @@ const Thumbnail = ({ work }: Props) => {
     }
 
     return (
-        <motion.div variants={fadein}>
+        <motion.div variants={fadein} key={work._id}>
             <Link
-                key={work._id}
                 className="thumbnail"
                 href={`/${work.category.slug.current}/${work.slug.current}`}
                 title={work.title}
