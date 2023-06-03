@@ -198,10 +198,9 @@ a.branding {
     box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
     z-index: 11;
 }
-.search-header{
+.search-header {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='398' viewBox='0 0 100 199'%3E%3Cg fill='%23161616' fill-opacity='0.05'%3E%3Cpath d='M0 199V0h1v1.99L100 199h-1.12L1 4.22V199H0zM100 2h-.12l-1-2H100v2z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
     padding: 2rem 2.5rem 2rem 2.5rem;
-    
 }
 .search-dialog h2 {
     white-space: normal;
@@ -249,7 +248,7 @@ button.close svg {
 .search-icon svg {
     width: 1.4rem;
     height: 1.4rem;
-    opacity: .7;
+    opacity: 0.7;
 }
 .search-dialog span {
     display: block;
@@ -257,26 +256,26 @@ button.close svg {
     color: rgba(var(--font-color-rgb), 0.75);
     font-size: 0.9rem;
 }
-.search-results{
+.search-results {
     display: grid;
     grid-template-columns: 1fr;
     gap: 1.5rem;
     padding: 0 2.5rem;
     background-color: #f8f8f8;
 }
-.search-item{
+.search-item {
     position: relative;
     overflow: hidden;
     display: block;
 }
-.search-item a{
+.search-item a {
     display: inline-block;
     width: 100%;
     position: relative;
     outline-offset: 0px;
     overflow: hidden;
 }
-.search-item svg{
+.search-item svg {
     width: 1.5rem;
     height: 1.5rem;
     position: absolute;
@@ -286,32 +285,33 @@ button.close svg {
     opacity: 0;
     transition: all 200ms var(--easeout);
 }
-.search-item a:hover svg, .search-item a:focus svg{
+.search-item a:hover svg,
+.search-item a:focus svg {
     transform: scaleX(-1) translatex(0rem);
     opacity: 1;
 }
-.search-item:first-child{
+.search-item:first-child {
     margin-top: 1.5em;
 }
-.search-item:last-child{
+.search-item:last-child {
     margin-bottom: 1.5em;
 }
-.search-item h3{
+.search-item h3 {
     font-size: 1.5em;
     font-weight: 600;
     padding-right: 2em;
 }
-.search-item span{
+.search-item span {
     font-size: 1em;
     font-weight: 400;
-    margin: .25rem 0 0 0;
-    opacity: .8;
+    margin: 0.25rem 0 0 0;
+    opacity: 0.8;
 }
 @media (max-width: 40em) {
-    .search-header{
+    .search-header {
         padding: 1.5rem;
     }
-    .search-results{
+    .search-results {
         padding: 0 1.5rem;
     }
 }
@@ -320,11 +320,11 @@ button.close svg {
         font-size: 1.6rem;
     }
 }
-@media (max-width: 25em){
-    .search-item svg{
+@media (max-width: 25em) {
+    .search-item svg {
         display: none;
     }
-    .search-item h3{
+    .search-item h3 {
         padding-right: 0;
     }
 }
@@ -379,15 +379,19 @@ button.close svg {
     overflow: hidden;
     line-height: 0;
     transition: all 200ms ease-in-out;
+    transform: scale(1);
 }
 .thumbnail:nth-child(1),
 .thumbnail:nth-child(2),
 .thumbnail:nth-child(3) {
     align-self: start;
 }
-.thumbnail:hover {
+.thumbnail:hover img {
     filter: drop-shadow(0 20px 13px rgb(0 0 0 / 0.03)) drop-shadow(0 8px 5px rgb(0 0 0 / 0.08));
     transform: scale(1.05);
+}
+.thumbnail:focus img {
+    transform: scale(0.95);
 }
 .thumbnail img {
     width: 100%;
@@ -395,7 +399,7 @@ button.close svg {
     border-radius: var(--border-radius);
     object-fit: contain;
     object-position: center;
-    transition: transform 200ms var(--easeout);
+    transition: all 200ms var(--easeout);
 }
 @media (max-width: 62em) {
     .gallery {
@@ -483,4 +487,138 @@ h1.work-title {
 }
 .description {
     margin-top: 1.5rem;
+}
+/* ===== ABOUT PAGE ===== */
+.about {
+    margin-top: 4rem;
+}
+.about h2 {
+    margin: 4rem 0 1rem 0;
+}
+.about p {
+    font-size: 1.2em;
+    max-width: 60em;
+    line-height: 1.9em;
+}
+@media (max-width: 40em) {
+    .about p {
+        hyphens: auto;
+    }
+}
+.exhibitions {
+    margin-top: 1.5rem;
+}
+.exhibitions p {
+    margin-bottom: 1rem;
+    line-height: 1.35em;
+}
+.exhibition-year {
+    margin-right: 1.25rem;
+    font-weight: 500;
+}
+
+/* ===== CONTACT PAGE ===== */
+.contactwrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 2em;
+    margin: 4em 0;
+}
+.contactdesc {
+    font-size: 1.2em;
+    line-height: 1.5em;
+    margin: 0 0 3em 0;
+    max-width: 25em;
+}
+.splitinput {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 2em;
+    row-gap: 1em;
+    margin-bottom: 1em;
+}
+.form label {
+    font-size: 1.1em;
+    letter-spacing: -0.05em;
+    word-spacing: 0.2em;
+    display: block;
+    padding-bottom: 0.25em;
+}
+
+.form input,
+.form textarea {
+    font-family: inherit;
+    font-size: 1.1em;
+    padding: 0.75em;
+    border: 2px solid rgba(var(--font-color-rgb), 0.25);
+    background-color: var(--background-color);
+    width: 100%;
+    transition: all 200ms var(--easeout);
+}
+.form input:focus,
+.form textarea:focus {
+    border: 2px solid var(--primary-color);
+    outline: none;
+}
+.form textarea {
+    margin-bottom: 1em;
+    min-height: 14em;
+    resize: vertical;
+}
+.form .error {
+    color: var(--primary-color);
+    margin-bottom: 1em;
+    border-left: 2px solid var(--primary-color);
+    padding-left: 1em;
+}
+button.primary,
+a.primary {
+    display: inline-block;
+    background-color: var(--font-color);
+    color: var(--background-color) !important;
+    font-size: 1em;
+    padding: 0.85em 2em;
+    border: 0;
+    cursor: pointer;
+    transition: all 200ms var(--easeout);
+}
+button.primary:hover {
+    background-color: var(--primary-color);
+}
+
+.contactimage img {
+    max-width: 80%;
+    width: 20em;
+    height: auto;
+}
+@media (max-width: 50em) {
+    .contactwrapper {
+        grid-template-columns: 1fr;
+    }
+    .splitinput {
+        column-gap: 1em;
+    }
+}
+/* Media query between 70 and 50 widths */
+
+@media (max-width: 70em) {
+    .splitinput {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+    }
+}
+@media (max-width: 50em) {
+    .splitinput {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr;
+    }
+}
+@media (max-width: 30em) {
+    .splitinput {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+    }
+}
+.success h2 {
+    margin-bottom: 1rem;
 }

@@ -2,6 +2,7 @@ import { getCategory } from '@/sanity/sanity-utils'
 import Thumbnail from '@/components/Thumbnail'
 import AnimatedTitle from '@/components/AnimatedTitle'
 import { Metadata } from 'next'
+import Gallery from '@/components/Gallery'
 
 type Props = {
     params: {
@@ -22,11 +23,12 @@ export default async function CategoryPage({ params }: Props) {
     return (
         <section className="container">
             <AnimatedTitle>{category.name}</AnimatedTitle>
-            <div className="gallery">
+            <Gallery works={works} />
+            {/* <div className="gallery">
                 {works.map((work: any) => (
-                    <Thumbnail key={work._id} work={work} />
+                    <Thumbnail work={work} />
                 ))}
-            </div>
+            </div> */}
         </section>
     )
 }

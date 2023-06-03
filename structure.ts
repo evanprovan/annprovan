@@ -1,7 +1,9 @@
 // import { WebPreview, JsonView } from './previews'
-import { HiOutlineCog } from 'react-icons/hi';
-import { orderableDocumentListDeskItem } from '@sanity/orderable-document-list';
-import { FiGrid } from 'react-icons/fi';
+import { HiOutlineCog } from 'react-icons/hi'
+import { orderableDocumentListDeskItem } from '@sanity/orderable-document-list'
+import { FiGrid } from 'react-icons/fi'
+import { AiOutlineMail } from 'react-icons/ai'
+import { BsFillPersonLinesFill } from 'react-icons/bs'
 
 // note: context includes `currentUser` and the client
 export const structure = (S: any, context: any) =>
@@ -10,7 +12,8 @@ export const structure = (S: any, context: any) =>
         .items([
             // Filter out document types we don't want in the list
             ...S.documentTypeListItems().filter(
-                (listItem: any) => !['media.tag', 'category', 'siteSettings'].includes(listItem.getId())
+                (listItem: any) =>
+                    !['media.tag', 'category', 'about', 'contact', 'siteSettings'].includes(listItem.getId())
             ),
 
             // About Page
@@ -42,13 +45,27 @@ export const structure = (S: any, context: any) =>
             //             .schemaType('socialMedia')
             //     ),
 
-            // // Site Settings
+            // About
+            S.listItem()
+                .title('About')
+                .id('aboutme')
+                .icon(BsFillPersonLinesFill)
+                .child(S.editor().schemaType('about').documentId('about')),
+
+            // Contact
+            S.listItem()
+                .title('Contact')
+                .id('contactme')
+                .icon(AiOutlineMail)
+                .child(S.editor().schemaType('contact').documentId('contact')),
+
+            // Site Settings
             S.listItem()
                 .title('Site Settings')
                 .id('siteSetting')
                 .icon(HiOutlineCog)
                 .child(S.editor().schemaType('siteSettings').documentId('siteSettings')),
-        ]);
+        ])
 
 // export const defaultDocumentNode = (S, {schemaType}) => {
 //   // Conditionally return a different configuration based on the schema type

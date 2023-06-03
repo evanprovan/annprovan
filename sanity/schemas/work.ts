@@ -1,5 +1,5 @@
-import {MdOutlineFilterFrames} from 'react-icons/md'
-import {defineType, defineField} from 'sanity'
+import { MdOutlineFilterFrames } from 'react-icons/md'
+import { defineType, defineField } from 'sanity'
 
 export const work = defineType({
     name: 'work',
@@ -37,14 +37,14 @@ export const work = defineType({
             name: 'media',
             title: 'Media',
             type: 'array',
-            of: [{type: 'image'}],
+            of: [{ type: 'image' }],
             validation: (Rule) => Rule.required(),
         }),
         defineField({
             name: 'category',
             title: 'Category',
             type: 'reference',
-            to: [{type: 'category'}],
+            to: [{ type: 'category' }],
             validation: (Rule) => Rule.required(),
         }),
         defineField({
@@ -54,7 +54,7 @@ export const work = defineType({
             of: [
                 {
                     type: 'reference',
-                    to: [{type: 'materials'}],
+                    to: [{ type: 'materials' }],
                 },
             ],
             validation: (Rule) => Rule.required(),
@@ -93,13 +93,41 @@ export const work = defineType({
             description: '(Optional)',
         }),
     ],
+    orderings: [
+        {
+            title: 'Year, New',
+            name: 'yearDesc',
+            by: [
+                { field: 'year', direction: 'desc' },
+                { field: 'title', direction: 'asc' },
+            ],
+        },
+        {
+            title: 'Year, Old',
+            name: 'yearAsc',
+            by: [
+                { field: 'year', direction: 'asc' },
+                { field: 'title', direction: 'desc' },
+            ],
+        },
+        {
+            title: 'Title, A-Z',
+            name: 'titleAsc',
+            by: [{ field: 'title', direction: 'asc' }],
+        },
+        {
+            title: 'Title, Z-A',
+            name: 'titleDesc',
+            by: [{ field: 'title', direction: 'desc' }],
+        },
+    ],
     preview: {
         select: {
             title: 'title',
             subtitle: 'year',
             media: 'media',
         },
-        prepare({title, subtitle, media}: any) {
+        prepare({ title, subtitle, media }: any) {
             return {
                 title: title,
                 subtitle: subtitle,

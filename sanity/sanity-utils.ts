@@ -1,10 +1,12 @@
-import { createClient, groq } from 'next-sanity';
-import createImageUrlBuilder from '@sanity/image-url';
-import { HomepageImg } from '@/types/HomepageImg';
-import { Work } from '@/types/Work';
-import { Category } from '@/types/Category';
-import clientConfig from './config/client-config';
-import { HeaderItems } from '@/types/HeaderItems';
+import { createClient, groq } from 'next-sanity'
+import createImageUrlBuilder from '@sanity/image-url'
+import clientConfig from './config/client-config'
+import { HomepageImg } from '@/types/HomepageImg'
+import { Work } from '@/types/Work'
+import { Category } from '@/types/Category'
+import { HeaderItems } from '@/types/HeaderItems'
+import { AboutPage } from '@/types/About'
+import { Contact } from '@/types/Contact'
 
 export async function getHeaderItems(): Promise<HeaderItems> {
     return createClient(clientConfig).fetch(
@@ -26,8 +28,9 @@ export async function getHeaderItems(): Promise<HeaderItems> {
                     }
                 }
             }`
-    );
+    )
 }
+
 export async function getHomepageImg(): Promise<HomepageImg> {
     return createClient(clientConfig).fetch(
         groq`*[_type == "siteSettings"][0]{
@@ -42,7 +45,7 @@ export async function getHomepageImg(): Promise<HomepageImg> {
                 }
               },
           }`
-    );
+    )
 }
 
 export async function getWork(slug: any): Promise<Work> {
@@ -77,7 +80,7 @@ export async function getWork(slug: any): Promise<Work> {
             work: slug.work,
             category: slug.category,
         }
-    );
+    )
 }
 
 export async function getCategory(slug: string): Promise<Category> {
@@ -117,7 +120,45 @@ export async function getCategory(slug: string): Promise<Category> {
             },
         }`,
         { slug }
-    );
+    )
 }
 
-export const urlFor = (source: string) => createImageUrlBuilder(createClient(clientConfig)).image(source);
+export async function getAbout(): Promise<AboutPage> {
+    return createClient(clientConfig).fetch(
+        groq`{
+                'about': *[_type == "about"][0]{
+                    artiststatement,
+                    bio,
+                    education,
+                    awardsgrants,
+                    collections,
+                    bibliography
+                },
+                'exhibitions': *[_type == "exhibitions"] | order(year desc){
+                    title,
+                    institution,
+                    year,
+                    location
+              }
+            }`
+    )
+}
+
+export async function getContact(): Promise<Contact> {
+    return createClient(clientConfig).fetch(
+        groq`*[_type == "contact"][0]{
+            description,
+            "image": image.asset-> {
+                _id,
+                metadata{
+                palette{
+                    darkMuted
+                },
+                lqip,
+                dimensions
+                }
+              },
+          }`
+    )
+}
+export const urlFor = (source: string) => createImageUrlBuilder(createClient(clientConfig)).image(source)

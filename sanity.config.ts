@@ -1,11 +1,12 @@
-import { defineConfig } from 'sanity';
-import { deskTool } from 'sanity/desk';
-import { visionTool } from '@sanity/vision';
-import schemaTypes from './sanity/schemas';
-import { structure } from './structure';
-import { media } from 'sanity-plugin-media';
+import { defineConfig } from 'sanity'
+import { deskTool } from 'sanity/desk'
+import { visionTool } from '@sanity/vision'
+import schemaTypes from './sanity/schemas'
+import { structure } from './structure'
+import { media } from 'sanity-plugin-media'
+import { vercelDeployTool } from 'sanity-plugin-vercel-deploy'
 
-const hideFromNewDocument = ['siteSettings', 'about', 'resume', 'media.tag'];
+const hideFromNewDocument = ['siteSettings', 'about', 'resume', 'media.tag']
 
 const config = defineConfig({
     projectId: 'yw9qen86',
@@ -14,12 +15,12 @@ const config = defineConfig({
     apiVersion: '2023-04-26',
     useCdn: false,
     basePath: '/admin',
-    plugins: [deskTool({ structure }), media(), visionTool()],
+    plugins: [deskTool({ structure }), media(), vercelDeployTool()],
     schema: { types: schemaTypes },
     document: {
         newDocumentOptions: (prev, context) =>
             prev.filter((document) => !hideFromNewDocument.includes(document.templateId)),
     },
-});
+})
 
-export default config;
+export default config
