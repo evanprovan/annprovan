@@ -80,15 +80,15 @@ const About = ({ about }: Props) => {
             </motion.div>
             <motion.div variants={fadeIn}>
                 <h2>Awards & Grants</h2>
-                <p>{about.about.awardsgrants}</p>
+                <pre>{about.about.awardsgrants}</pre>
             </motion.div>
             <motion.div variants={fadeIn}>
                 <h2>Collections</h2>
-                <p>{about.about.collections}</p>
+                <pre>{about.about.collections}</pre>
             </motion.div>
             <motion.div variants={fadeIn}>
                 <h2>Bibliography</h2>
-                <p>{about.about.bibliography}</p>
+                <pre>{about.about.bibliography}</pre>
             </motion.div>
         </motion.div>
     )

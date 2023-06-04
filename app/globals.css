@@ -505,6 +505,13 @@ h1.work-title {
         hyphens: auto;
     }
 }
+.about pre {
+    font-family: inherit;
+    white-space: pre-wrap;
+    font-size: 1.2em;
+    max-width: 60em;
+    line-height: 1.9em;
+}
 .exhibitions {
     margin-top: 1.5rem;
 }
