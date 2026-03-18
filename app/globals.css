@@ -130,7 +130,7 @@ a.branding {
     transition: width 200ms;
 }
 .nav-menu-list a:hover::after,
-.nav-menu-list a[data-active]::after {
+.nav-menu-list a.active::after {
     width: 100%;
     transition: width 200ms;
 }

@@ -84,7 +84,7 @@ export async function getWork(slug: any): Promise<Work> {
 }
 
 export async function getCategory(slug: string): Promise<Category> {
-    return createClient(clientConfig).fetch(
+    return await createClient(clientConfig).fetch(
         groq`{
             'category': *[_type == "category" && slug.current == $slug][0]{
                 name,

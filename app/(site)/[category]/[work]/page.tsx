@@ -6,19 +6,20 @@ import Link from 'next/link'
 import { Metadata } from 'next'
 
 type Props = {
-    params: {
+    params: Promise<{
+        category: string
         work: string
-    }
+    }>
 }
 
-export async function generateMetadata({ params }: any): Promise<Metadata> {
-    const slug = params
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+    const slug = await params
     const work = await getWork(slug)
     return { title: work.title + ' - Ann Provan' }
 }
 
 export default async function WorkPage({ params }: Props) {
-    const slug = params
+    const slug = await params
     const work = await getWork(slug)
 
     return (
