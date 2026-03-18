@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@fancyapps/ui": "^5.0.36",
-    "@formspree/react": "^2.5.5",
+    "@formspree/react": "^3.0.0",
     "@portabletext/react": "^3.2.4",
     "@radix-ui/react-dialog": "^1.1.15",
     "@sanity/image-url": "^1.2.0",

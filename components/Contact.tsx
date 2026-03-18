@@ -1,6 +1,6 @@
 'use client'
 import { urlFor } from '@/sanity/sanity-utils'
-import { Contact } from '@/types/Contact'
+import type { Contact } from '@/types/Contact'
 import { ValidationError, useForm } from '@formspree/react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
