@@ -3,7 +3,7 @@
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import * as Dialog from '@radix-ui/react-dialog'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence, Variants } from 'framer-motion'
 import { Category } from '@/types/HeaderItems'
 
 interface Props {
@@ -19,7 +19,7 @@ const MobileNavbar: React.FC<Props> = ({
 }) => {
     const pathname = usePathname()
 
-    const mobileNavAnimation = {
+    const mobileNavAnimation: Variants = {
         visible: {
             opacity: 1,
             clipPath: 'ellipse(100% 100% at 50% 50%)',
@@ -43,7 +43,7 @@ const MobileNavbar: React.FC<Props> = ({
             },
         },
     }
-    const fadeIn = {
+    const fadeIn: Variants = {
         visible: {
             color: 'rgb(22, 22, 22)',
             opacity: 1,

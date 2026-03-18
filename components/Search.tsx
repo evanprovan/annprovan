@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import * as Dialog from '@radix-ui/react-dialog'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence, Variants } from 'framer-motion'
 import { useState } from 'react'
 import { Works } from '@/types/HeaderItems'
 
@@ -62,7 +62,7 @@ const Search: React.FC<Props> = ({ searchOpen, setSearchOpen, works }) => {
         </svg>
     )
 
-    const dialogAnimation = {
+    const dialogAnimation: Variants = {
         visible: {
             x: '-50%',
             y: '-50%',

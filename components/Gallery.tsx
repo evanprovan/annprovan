@@ -1,9 +1,9 @@
 'use client'
-import { motion } from 'framer-motion'
+import { motion, Variants } from 'framer-motion'
 import Thumbnail from './Thumbnail'
 
 const Gallery = ({ works }: any) => {
-    const fadeinchildren = {
+    const fadeinchildren: Variants = {
         visible: {
             transition: {
                 delayChildren: 0.2,

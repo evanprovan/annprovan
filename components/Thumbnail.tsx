@@ -1,6 +1,6 @@
 import { urlFor } from '@/sanity/sanity-utils'
 import { Work } from '@/types/Work'
-import { motion } from 'framer-motion'
+import { motion, Variants } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -9,7 +9,7 @@ type Props = {
 }
 
 const Thumbnail = ({ work }: Props) => {
-    const fadein = {
+    const fadein: Variants = {
         visible: {
             opacity: 1,
             transition: {

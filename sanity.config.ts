@@ -4,7 +4,6 @@ import { visionTool } from '@sanity/vision'
 import schemaTypes from './sanity/schemas'
 import { structure } from './structure'
 import { media } from 'sanity-plugin-media'
-import { vercelDeployTool } from 'sanity-plugin-vercel-deploy'
 
 const hideFromNewDocument = ['siteSettings', 'about', 'resume', 'media.tag']
 
@@ -15,7 +14,7 @@ const config = defineConfig({
     apiVersion: '2023-04-26',
     useCdn: false,
     basePath: '/admin',
-    plugins: [deskTool({ structure }), media(), vercelDeployTool()],
+    plugins: [deskTool({ structure }), media()],
     schema: { types: schemaTypes },
     document: {
         newDocumentOptions: (prev, context) =>

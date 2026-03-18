@@ -1,7 +1,7 @@
 'use client'
 import { motion } from 'framer-motion'
 import { Exhibitions } from '@/types/About'
-import { About } from '@/types/About'
+import type { About } from '@/types/About'
 
 type Props = {
     about: {

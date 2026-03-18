@@ -1,5 +1,5 @@
 'use client'
-import { motion } from 'framer-motion'
+import { motion, Variants } from 'framer-motion'
 import Link from 'next/link'
 import Image from 'next/image'
 import { urlFor } from '@/sanity/sanity-utils'
@@ -7,7 +7,7 @@ import Fancybox from './Fancybox'
 import Carousel from './Carousel'
 
 const SingleWork = ({ work }: any) => {
-    const fadeinmedia = {
+    const fadeinmedia: Variants = {
         visible: {
             opacity: 1,
             y: 0,
@@ -23,7 +23,7 @@ const SingleWork = ({ work }: any) => {
             },
         },
     }
-    const fadeinchildren = {
+    const fadeinchildren: Variants = {
         visible: {
             transition: {
                 duration: 0.4,
@@ -39,37 +39,7 @@ const SingleWork = ({ work }: any) => {
             },
         },
     }
-    // const fadeininfo = {
-    //     visible: {
-    //         opacity: 1,
-    //         y: 0,
-    //         transition: {
-    //             duration: 0.4,
-    //         },
-    //     },
-    //     hidden: {
-    //         opacity: 0,
-    //         y: 10,
-    //         transition: {
-    //             duration: 0.2,
-    //         },
-    //     },
-    // }
-    // const fadeintitle = {
-    //     visible: {
-    //         clipPath: 'polygon(0 0, 100% 0, 100% 120%, 0% 120%)',
-    //         transition: {
-    //             duration: 0.5,
-    //         },
-    //     },
-    //     hidden: {
-    //         clipPath: 'polygon(0 0, 0% 0, 0% 120%, 0% 120%)',
-    //         transition: {
-    //             duration: 0.2,
-    //         },
-    //     },
-    // }
-    const fadein = {
+    const fadein: Variants = {
         visible: {
             color: 'rgb(22, 22, 22)',
             opacity: 1,
